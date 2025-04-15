@@ -82,5 +82,5 @@ class ItemStorage:
             ''', user_id, title, description)
             res_list = []
             for i in result:
-                res_list.append(ItemEntry(item_id=i[0], user_id=i[1], title=i[2], description=i[3]))
+                res_list.append(ItemEntry(item_id=i[0], user_id=None, title=None, description=None))
             return res_list
