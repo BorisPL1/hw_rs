@@ -24,7 +24,7 @@ async def do_reliable_request(url: str, observer: ResultsObserver) -> None:
             response = await client.get(url, timeout=10)
             try:
                 response.raise_for_status()
-            except Exception as e:
+            except Exception:
                 continue
             data = response.read()
 
