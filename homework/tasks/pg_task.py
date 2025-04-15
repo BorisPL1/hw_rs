@@ -73,11 +73,14 @@ class ItemStorage:
         Напишите код для поиска записей, имеющих указанные user_id, title и description.
         """
         async with self._pool.acquire() as connection:
-           result =  await connection.fetch('''SELECT item_id FROM items 
+            result = await connection.fetch('''SELECT item_id FROM items 
                                    WHERE
                                         user_id = $1
                                         and title = $2
                                         and description = $3 
 
             ''', user_id, title, description)
-        return result
+            res_list = []
+            for i in result:
+                res_list.append(ItemEntry(item_id=i[0], user_id=i[1], title=i[2], description=i[3]))
+            return res_list
