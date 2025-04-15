@@ -75,7 +75,7 @@ class ItemStorage:
         async with self._pool.acquire() as connection:
            result =  await connection.fetch('''SELECT item_id FROM items 
                                    WHERE
-                                        user id = $1
+                                        user_id = $1
                                         and title = $2
                                         and description = $3 
 
